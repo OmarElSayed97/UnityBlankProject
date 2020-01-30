@@ -1,6 +1,69 @@
 # UnityBlankProject
 
+# Useful Code Snippets
 
+###Controlling Shader Graph from script
+```C#
+ [SerializeField]
+ Material mat_DissolveMaterial;
+    
+ IEnumerator Dissolve()
+    {
+        float counter = 1;
+        while (counter > -1)
+        {
+            counter -= Time.deltaTime;
+            yield return new WaitForSeconds(0.01f);
+            mat_DissolveMaterial.SetFloat("Vector1_7C06CC4A", counter);
+        }
+    }
+
+```
+
+
+###Filling Images
+```C#
+ void FillBar(Image img, int value, int originalValue)
+  {
+    float newValue = (float)value / originalValue;
+    img.fillAmount = newValue;
+  }
+
+  IEnumerator FillWithTime(Image img, float sec)
+  {
+    float counter = 0;
+
+    while (counter < sec)
+    {
+
+      counter += Time.deltaTime;
+      img.fillAmount = counter / sec;
+      yield return null;
+    }
+
+  }
+  ```
+  
+###Particles effects on hit
+```C#
+#region Public GameObjects
+    [SerializeField] 
+    private GameObject go_ParticlePrefab;
+#endregion
+
+#region Private GameObjects
+    private ParticleSystem ps_OnHitParticleSystem;
+    private ParticleSystem ps_System;
+#endregion
+
+//In Start Method
+        ps_OnHitParticleSystem = go_ParticlePrefab.GetComponent<ParticleSystem>();
+        ps_System = Instantiate(ps_OnHitParticleSystem);
+        ps_System.transform.position = transform.position;
+        ps_System.transform.SetParent(transform);
+//OnCollision
+    ps_System.Play();
+```
 
 ## Conventions & Rules
 
