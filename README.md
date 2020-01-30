@@ -2,7 +2,7 @@
 
 # Useful Code Snippets
 
-###Controlling Shader Graph from script
+### Controlling Shader Graph from script
 ```C#
  [SerializeField]
  Material mat_DissolveMaterial;
@@ -21,7 +21,7 @@
 ```
 
 
-###Filling Images
+### Filling Images
 ```C#
  void FillBar(Image img, int value, int originalValue)
   {
@@ -44,7 +44,7 @@
   }
   ```
   
-###Particles effects on hit
+### Particles effects on hit
 ```C#
 #region Public GameObjects
     [SerializeField] 
